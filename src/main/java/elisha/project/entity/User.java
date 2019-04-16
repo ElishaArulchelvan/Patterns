@@ -1,4 +1,4 @@
-package elisha.fyp.project.entity;
+package elisha.project.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +42,21 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "role", nullable = false)
 	private Role role = Role.USER;
+	
+	public User()
+	{
+		
+	}
+	
+	public User(String firstName, String lastName, String email, boolean active, String password, Role role)
+	{
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.active = active;
+		this.password = password;
+		this.role = role;
+	}
 
 	public String getFirstName() {
 		return firstName;

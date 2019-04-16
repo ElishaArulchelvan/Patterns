@@ -1,4 +1,4 @@
-package elisha.fyp.project.config;
+package elisha.project.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

@@ -1,4 +1,4 @@
-package elisha.fyp.project.config;
+package elisha.project.config;
 
 import java.util.Properties;
 
@@ -20,7 +20,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @PropertySource(value= {"classpath:hibernate.properties"})
-@EnableJpaRepositories(basePackages="elisha.fyp.project.dao")
+@EnableJpaRepositories(basePackages="elisha.project.dao")
 public class HibernateConfig {
 	
 	@Autowired
@@ -49,7 +49,7 @@ public class HibernateConfig {
 		properties.put("hibernate.generate_statistics", environment.getProperty("hibernate.generate_statistics"));
 
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		factoryBean.setPackagesToScan("elisha.fyp.project.entity");
+		factoryBean.setPackagesToScan("elisha.project.entity");
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
 		factoryBean.setJpaProperties(properties);
 		factoryBean.setDataSource(dataSource());

@@ -1,4 +1,4 @@
-package elisha.fyp.project.config;
+package elisha.project.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan("elisha.fyp.project")
+@ComponentScan("elisha.project")
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableAsync

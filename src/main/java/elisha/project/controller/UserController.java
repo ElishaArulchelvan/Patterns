@@ -1,4 +1,4 @@
-package elisha.fyp.project.controller;
+package elisha.project.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import elisha.fyp.project.entity.User;
-import elisha.fyp.project.service.UserService;
+import elisha.project.entity.User;
+import elisha.project.service.UserService;
 
 @Controller
 @Transactional
@@ -24,12 +24,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	public String showUsers(Model model)
+	/*public String showUsers(Model model)
 	{
 		List<User> users = userService.findAll();
 		model.addAttribute("usersList", users);
 		return "users";
-	}
+	}*/
 	
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login(Model model) {
@@ -51,12 +51,12 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/users/delete/{id}", method = RequestMethod.POST)
 	public String deleteUser(@PathVariable Long id) {
 
 		userService.delete(id);
 
 		return "redirect:/users";
-	}
+	}*/
 
 }

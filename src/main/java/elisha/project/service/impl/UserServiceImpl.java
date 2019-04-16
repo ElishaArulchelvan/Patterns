@@ -1,4 +1,4 @@
-package elisha.fyp.project.service.impl;
+package elisha.project.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import elisha.fyp.project.dao.UserDao;
-import elisha.fyp.project.entity.User;
-import elisha.fyp.project.service.UserService;
+import elisha.project.dao.UserDao;
+import elisha.project.entity.User;
+import elisha.project.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -48,20 +48,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByEmail(email);
 	}
 
-	@Override
-	public List<User> findAll() {
-		return userDao.findAll();
-	}
-
-
-	@Override
-	public void delete(Long id) {
-		userDao.delete(id);
-	}
-
-	public User findOne(Long id) {
-		return userDao.findOne(id);
-	}
+	
 
 
 }

@@ -1,4 +1,4 @@
-package elisha.fyp.project.config;
+package elisha.project.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import elisha.fyp.project.service.UserService;
+import elisha.project.service.UserService;
 
 @Configuration
 @EnableWebSecurity
