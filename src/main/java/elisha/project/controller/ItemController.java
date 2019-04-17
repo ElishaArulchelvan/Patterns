@@ -83,6 +83,8 @@ public class ItemController {
 		return "viewItems";
 	}
 	
+	
+	
 	@RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
 	public String deleteItem(@PathVariable Long id, Model model)
 	{

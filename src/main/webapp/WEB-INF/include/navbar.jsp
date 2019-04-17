@@ -58,11 +58,9 @@ li a:hover:not(.active) {
 		<li role="separator" class="divider"></li>
 		</sec:authorize>
 		<li><a href="${logoutURL}">Logout</a></li>
-	</ul></li>
-
 </ul>
 
-</ul>
+
 
 </body>
 </html>

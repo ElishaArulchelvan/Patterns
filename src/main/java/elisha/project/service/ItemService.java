@@ -2,6 +2,7 @@ package elisha.project.service;
 
 import java.util.List;
 
+import elisha.project.entity.Category;
 import elisha.project.entity.Item;
 
 public interface ItemService {
@@ -10,6 +11,8 @@ public interface ItemService {
 	void delete(Item item);
 	List<Item> findAll();
 	Item findById(Long id);
+	
+	List<Item> findByCategory(Category category);
 	
 
 }

@@ -6,7 +6,10 @@
 
 <c:url var="viewItemsURL" value="/viewItems" />
 <c:url value="/delete" var="deleteItemURL" />
-
+<c:url var="PhoneUrl" value="/searchByCategory?category=Phone"  />
+<c:url var="LaptopUrl" value="/searchByCategory?category=Laptop"  />
+<c:url var="TVUrl" value="/searchByCategory?category=TV"  />
+<c:url var="TabletUrl" value="/searchByCategory?category=Tablet"  />
 
 <div class="container">
 
@@ -14,6 +17,16 @@
 
 	<div class="row">
 		<div class="col-md-12">
+		<table class="table table-striped table-hover table-bordered">
+				<thead>
+					<tr>
+						<th class="text-center"><a href="${PhoneUrl}">Phones </a></th>
+						<th class="text-center"><a href="${LaptopUrl}">Laptops</a></th>
+						<th class="text-center"><a href="${TVUrl}">TV </a></th>
+						<th class="text-center"><a href="${TabletUrl}">Tablets</a></th>
+					</tr>
+				</thead>
+				</table>
 			<table class="table table-striped table-hover table-bordered">
 				<thead>
 					<tr>
@@ -29,8 +42,8 @@
 					<c:forEach items="${itemList}" var="item">
 						<tr>
 							<td>${item.getItemId()}</td>
-							<td>${item.getTitle()}
-								${item.getManufacturer()}</td>
+							<td>${item.getTitle()}</td>
+							<td>${item.getManufacturer()}</td>
 							<td>${item.getPrice()}</td>
 							<td>${item.getCategory()}</td>
 							<td><a href="<c:url value='/delete/${item.itemId}'  />" class="btn btn-danger custom-width" path="status">Delete</a></td>

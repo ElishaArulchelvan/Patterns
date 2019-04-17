@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import elisha.project.dao.ItemDao;
+import elisha.project.entity.Category;
 import elisha.project.entity.Item;
 import elisha.project.service.ItemService;
 
@@ -37,6 +38,13 @@ public class ItemServiceImpl implements ItemService {
 	public Item findById(Long id) {
 		
 		return itemDao.findOne(id);
+	}
+
+	@Override
+	public List<Item> findByCategory(Category category) {
+		
+		List<Item> items = itemDao.findByCategory(category);
+		return items;
 	}
 	
 	
