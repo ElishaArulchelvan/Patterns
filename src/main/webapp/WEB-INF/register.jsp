@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href= "webjars/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"></link>
 
 <c:url value="/register" var="registerURL"/>
 <c:url value="/login" var="loginURL"/>
@@ -20,4 +21,5 @@
         </div>
     </div>
 </div>
-
+<script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
+<script src="webjars/bootstrap/4.2.1/js/bootstrap.min.js"></script>
