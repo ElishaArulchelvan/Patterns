@@ -14,5 +14,6 @@ public interface ItemDao extends JpaRepository<Item, Long> {
 	List<Item> findByCategory(Category category);
 	List<Item> findByManufacturer(String manufacturer);
 	List<Item> findByTitle(String title);
-
+	List<Item> findAllByOrderByPriceAsc();
+	List<Item> findAllByOrderByPriceDesc();
 }

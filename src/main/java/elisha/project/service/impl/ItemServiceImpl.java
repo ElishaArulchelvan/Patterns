@@ -60,6 +60,21 @@ public class ItemServiceImpl implements ItemService {
 		List<Item> itemList = itemDao.findByTitle(title);
 		return itemList;
 	}
+
+	@Override
+	public List<Item> findAscendingPrice() {
+		
+		List<Item> itemList = itemDao.findAllByOrderByPriceAsc();
+		return itemList;
+	}
+
+	@Override
+	public List<Item> findDescendingPrice() {
+		
+		List<Item> itemList = itemDao.findAllByOrderByPriceDesc();
+		return itemList;
+
+	}
 	
 	
 

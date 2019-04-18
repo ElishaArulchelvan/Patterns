@@ -29,6 +29,9 @@ public class Item {
 	@Column(nullable = false, unique = true)
 	private Category category;
 	
+	@Column(nullable = false, unique = true)
+	private int quantity;
+	
 	//private byte[] image;
 	
 	public Item()
@@ -36,12 +39,13 @@ public class Item {
 		
 	}
 	
-	public Item(String title, String manufacturer, double price, Category category)
+	public Item(String title, String manufacturer, double price, Category category, int quantity)
 	{
 		this.title = title;
 		this.manufacturer = manufacturer;
 		this.price = price;
 		this.category = category;
+		this.quantity = quantity;
 	}
 
 	public Long getItemId()

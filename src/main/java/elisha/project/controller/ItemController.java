@@ -85,15 +85,39 @@ public class ItemController {
 	
 	
 	
-	@RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
-	public String deleteItem(@PathVariable Long id, Model model)
+	@RequestMapping(value = {"/delete/{itemId}"}, method = RequestMethod.GET)
+	public String deleteItem(@PathVariable Long itemId, Model model)
 	{
 		
-		Item item = itemService.findById(id);
+		Item item = itemService.findById(itemId);
 		itemService.delete(item);
 		return "success";
 	}
 	
+	@RequestMapping(value = "/ascendingPrice", method = RequestMethod.GET)
+	public String ascendingPriceManu(Model model, @RequestParam(value = "manufacturer", defaultValue = "") String name)
+	{
+		List<Item> itemList = itemService.findAscendingPrice();
+		model.addAttribute("itemList", itemList);
+		return "viewItems";
+	}
+	
+	@RequestMapping(value = "/descendingPrice", method = RequestMethod.GET)
+	public String descendingPrice(Model model, @RequestParam(value = "manufacturer", defaultValue = "") String name)
+	{
+		List<Item> itemList = itemService.findDescendingPrice();
+		model.addAttribute("itemList", itemList);
+		return "viewItems";
+	}
+	
+	@RequestMapping(value = {"/edit/{itemId}"}, method = RequestMethod.GET)
+	public String editItem(Model model, @PathVariable Long itemId)
+	{
+		Item item = itemService.findById(itemId);
+		model.addAttribute("itemForm", item);
+		return "addItem";
+	}
+
 	
 
 }

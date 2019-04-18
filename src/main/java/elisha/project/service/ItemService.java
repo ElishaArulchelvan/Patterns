@@ -15,6 +15,8 @@ public interface ItemService {
 	List<Item> findByCategory(Category category);
 	List<Item> searchByManufacturer(String manufacturer);
 	List<Item> searchByTitle(String title);
+	List<Item> findAscendingPrice();
+	List<Item> findDescendingPrice();
 	
 
 }
