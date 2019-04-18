@@ -46,6 +46,20 @@ public class ItemServiceImpl implements ItemService {
 		List<Item> items = itemDao.findByCategory(category);
 		return items;
 	}
+
+	@Override
+	public List<Item> searchByManufacturer(String manufacturer) {
+		
+		List<Item> itemList = itemDao.findByManufacturer(manufacturer);
+		return itemList;
+	}
+
+	@Override
+	public List<Item> searchByTitle(String title) {
+		
+		List<Item> itemList = itemDao.findByTitle(title);
+		return itemList;
+	}
 	
 	
 

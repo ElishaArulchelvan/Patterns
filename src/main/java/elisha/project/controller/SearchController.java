@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -45,5 +46,31 @@ public class SearchController {
 		return "viewItems";
 	}
 	
+	@RequestMapping("/searchByMan")
+	public String seachByMan(@ModelAttribute("manufacturer") String manufacturer, Principal principal, Model model)
+	{
+		List<Item> itemList = itemService.searchByManufacturer(manufacturer);
+		if(itemList.isEmpty())
+		{
+			model.addAttribute("emptyList", true);
+			return "viewItems";
+		}
+		model.addAttribute("itemList", itemList);
+		return "viewItems";
+	}
+	
+	@RequestMapping("/searchByTitle")
+	public String searchByTitle(@ModelAttribute("title") String title, Principal principal, Model model)
+	{
+		List<Item> itemList = itemService.searchByTitle(title);
+		if(itemList.isEmpty())
+		{
+			model.addAttribute("emptyList", true);
+			return "viewItems";
+		}
+		model.addAttribute("itemList", itemList);
+		return "viewItems";
+	
+	}
 
 }

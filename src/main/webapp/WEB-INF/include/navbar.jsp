@@ -7,6 +7,9 @@
 <c:url value="/main" var="mainURL" />
 <c:url value="/addItem" var="addItemURL" />
 <c:url value="/viewItems" var="viewItemsURL" />
+<c:url value="/searchByMan" var="searchByManURL" />
+<c:url value="/searchByTitle" var="searchByTitleURL" />
+<c:url value="/logout" var="logoutURL" />
 
 <html>
 <head>
@@ -54,7 +57,23 @@ li a:hover:not(.active) {
 	
 	<li>
 	<sec:authorize access="hasRole('USER')">
-		<li><a href="${requestURL}">Send Request</a></li>					
+		<li><a href="${requestURL}">Send Request</a></li>
+		<li>
+		<form class="navbar-form" action="${searchByManURL}" method="post">
+			<div class="form-group">
+				<input type="text" name="manufacturer" class="form-control" placeholder="Manufacturer" />
+			</div>
+			<button type="submit" class="btn btn-default" align="right">Search</button>
+		</form>
+	</li>
+	<li>
+		<form class="navbar-form" action="${searchByTitleURL}" method="post">
+			<div class="form-group">
+				<input type="text" name="title" class="form-control" placeholder="Title" />
+			</div>
+			<button type="submit" class="btn btn-default">Search</button>
+		</form>
+	</li>					
 		<li role="separator" class="divider"></li>
 		</sec:authorize>
 		<li><a href="${logoutURL}">Logout</a></li>

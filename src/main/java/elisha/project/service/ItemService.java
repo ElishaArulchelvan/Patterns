@@ -13,6 +13,8 @@ public interface ItemService {
 	Item findById(Long id);
 	
 	List<Item> findByCategory(Category category);
+	List<Item> searchByManufacturer(String manufacturer);
+	List<Item> searchByTitle(String title);
 	
 
 }
