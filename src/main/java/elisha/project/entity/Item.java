@@ -6,6 +6,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +33,10 @@ public class Item {
 	
 	@Column(nullable = false, unique = true)
 	private int quantity;
+	
+	@ManyToOne
+	@JoinColumn(name="shoppingCartId")
+	private ShoppingCart shoppingCart;
 	
 	//private byte[] image;
 	
@@ -89,6 +95,16 @@ public class Item {
 		this.category = category;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	
+
 	/*public byte[] getImage() {
 		return image;
 	}
@@ -96,6 +112,8 @@ public class Item {
 	public void setImage(byte[] image) {
 		this.image = image;
 	}*/
+	
+	
 	
 	
 

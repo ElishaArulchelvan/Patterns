@@ -46,6 +46,11 @@
 						<td><form:errors path="price" class="error-message" /></td>
 					</tr>
 					<tr>
+						<td class="custom">Quantity:</td>
+						<td><form:input path="quantity" /></td>
+						<td><form:errors path="quantity" class="error-message" /></td>
+					</tr>
+					<tr>
 						<td>&nbsp;</td>
 						<td><input type="submit" value="Save" id="send" /></td>
 					</tr>

@@ -57,7 +57,7 @@ li a:hover:not(.active) {
 	
 	<li>
 	<sec:authorize access="hasRole('USER')">
-		<li><a href="${requestURL}">Send Request</a></li>
+		<li><a href="${viewItemsURL}">View Items</a></li>
 		<li>
 		<form class="navbar-form" action="${searchByManURL}" method="post">
 			<div class="form-group">
