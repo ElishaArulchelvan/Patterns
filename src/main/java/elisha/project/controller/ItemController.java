@@ -117,6 +117,16 @@ public class ItemController {
 		model.addAttribute("itemForm", item);
 		return "addItem";
 	}
+	
+	@RequestMapping(value = "/item/{itemId}")
+	public String showBookById(@PathVariable("itemId") Long itemId, Model model) {
+
+		
+		Item item = itemService.findById(itemId);
+		model.addAttribute("item", item);
+
+		return "item";
+	}
 
 	
 

@@ -61,7 +61,7 @@
 						    </security:authorize>
 						    <security:authorize access="hasRole('USER')">
 									<td><a href="<c:url value='/add/${item.itemId}'  />" class="btn btn-danger custom-width" >Add To Cart</a></td>
-									<td><a href="<c:url value='/newCart/${item.itemId}'  />" class="btn btn-danger custom-width" >Delete</a></td>
+									<td><a href="<c:url value='/item/${item.itemId}'  />" class="btn btn-danger custom-width" >View</a></td>
 						    </security:authorize>
 						</tr>
 					</c:forEach>
