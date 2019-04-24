@@ -30,7 +30,7 @@
 	<table>
 	<security:authorize access="hasRole('USER')">
 
-			<td class="text-center"><a href="${buyUrl}/${item.itemId}"
+			<td class="text-center"><a href="${buyUrl}/${item.iid}"
 				class="btn btn-sm btn-primary">Add to Cart</a></td>
 			<td class="text-center"><c:choose>
 					<c:when test="${item.quantity > 1}"> In stock.
@@ -41,7 +41,7 @@
 		</security:authorize>
 		<security:authorize access="hasRole('ADMIN')">
 
-			<td class="text-center"><a href="${editURL}/${item.itemId}"
+			<td class="text-center"><a href="${editURL}/${item.id}"
 				class="btn btn-sm btn-primary">Add to Cart</a></td>
 			<td class="text-center"><c:choose>
 					<c:when test="${item.quantity > 1}"> In stock.

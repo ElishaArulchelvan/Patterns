@@ -1,5 +1,6 @@
 package elisha.project.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import elisha.project.entity.Category;
@@ -17,6 +18,8 @@ public interface ItemService {
 	List<Item> searchByTitle(String title);
 	List<Item> findAscendingPrice();
 	List<Item> findDescendingPrice();
+	
+	ArrayList<Item> findByTitle(String itemName);
 	
 
 }

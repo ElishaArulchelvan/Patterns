@@ -1,5 +1,6 @@
 package elisha.project.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -15,78 +17,57 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
-public class CartItem {
+@Table(name="cartitem")
+@IdClass(CartItemId.class)
+public class CartItem{
+	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "CartItemId")
-	private Long id;
-	
-	@OneToOne
-	private Item item;
-	
-	@ManyToOne
-	@JoinColumn(name="shoppingCartId")
-	private ShoppingCart shoppingCart;
-	
-	@OneToMany(mappedBy = "cartItem")
-	private List<ItemToCartItem> itemToCartItemList;
-	
-	private BigDecimal subTotal;
-	
-	private int quantity;
+    @ManyToOne
+    @JoinColumn(name = "cartId")
+    private Cart cart;
 
-	public Long getId() {
-		return id;
-	}
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "itemId")
+    private Item item;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "quantity")
+    private int quantity;
 
-	public Item getItem() {
-		return item;
-	}
+    public CartItem() {
 
-	public void setItem(Item item) {
-		this.item = item;
-	}
+    }
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
-	}
+    public CartItem(Cart cart, Item item, int quantity) {
+        this.cart = cart;
+        this.item = item;
+        this.quantity = quantity;
+    }
 
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
+    public Cart getCart() {
+        return cart;
+    }
 
-	public List<ItemToCartItem> getItemToCartItemList() {
-		return itemToCartItemList;
-	}
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
 
-	public void setItemToCartItemList(List<ItemToCartItem> itemToCartItemList) {
-		this.itemToCartItemList = itemToCartItemList;
-	}
+    public Item getItem() {
+        return item;
+    }
 
-	public BigDecimal getSubTotal() {
-		return subTotal;
-	}
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
-	public void setSubTotal(BigDecimal subTotal) {
-		this.subTotal = subTotal;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	
-	
-	
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 	
 
 }

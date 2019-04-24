@@ -1,5 +1,6 @@
 package elisha.project.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +17,6 @@ public interface ItemDao extends JpaRepository<Item, Long> {
 	List<Item> findByTitle(String title);
 	List<Item> findAllByOrderByPriceAsc();
 	List<Item> findAllByOrderByPriceDesc();
+	
+	ArrayList<Item> findByTitleLike(String itemName);
 }

@@ -10,6 +10,7 @@
 <c:url value="/searchByMan" var="searchByManURL" />
 <c:url value="/searchByTitle" var="searchByTitleURL" />
 <c:url value="/logout" var="logoutURL" />
+<c:url value="/Cart" var="cartURL" />
 
 <html>
 <head>
@@ -73,7 +74,8 @@ li a:hover:not(.active) {
 			</div>
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>
-	</li>					
+	</li>	
+	<li><a href="${cartURL}">Cart</a></li>				
 		<li role="separator" class="divider"></li>
 		</sec:authorize>
 		<li><a href="${logoutURL}">Logout</a></li>

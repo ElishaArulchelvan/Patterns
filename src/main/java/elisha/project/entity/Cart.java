@@ -1,57 +1,83 @@
 package elisha.project.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.context.annotation.ScopedProxyMode;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@Component
-@Scope(value=WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+
+@Entity
+@Table(name = "cart")
 public class Cart {
 	
-	private Map<Item, Integer> contents = new HashMap<>();
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+
+	@OneToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "userId")
+	private User user;
+
+	@OneToMany(mappedBy = "cart")
+	private Set<CartItem> cartItem;
+
+	//private double totalPrice;
 	
-	public void addItem(Item item, int count)
+	public Cart()
 	{
-		if(contents.containsKey(item))
-		{
-			contents.put(item, contents.get(item) + count);
-		}
-		else
-		{
-			contents.put(item, count);
-		}
-	}
-	
-	public void removeItem(Item item)
-	{
-		contents.remove(item);
-	}
-	
-	public void clearCart()
-	{
-		contents.clear();
-	}
-	
-	public double getTotal()
-	{
-		double total =0;
-		for(Item item: contents.keySet())
-		{
-			total = item.getPrice();
-		}
-		return total;
+		
 	}
 
-	public Map<Item, Integer> getContents() {
-		return contents;
+	public int getId() {
+		return id;
 	}
 
-	public void setContents(Map<Item, Integer> contents) {
-		this.contents = contents;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Set<CartItem> getCartItem() {
+		return cartItem;
+	}
+
+	public void setCartItem(Set<CartItem> cartItem) {
+		this.cartItem = cartItem;
+	}
+
+	public double total()
+	{
+		double total = 0;
+		ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
+        cartItems.addAll(this.getCartItem());
+
+        for (int i = 0; i < cartItems.size(); i++) {
+            Item item = cartItems.get(i).getItem();
+            total += item.getPrice() * cartItems.get(i).getQuantity();
+        }
+
+        return total;
 	}
 	
 	

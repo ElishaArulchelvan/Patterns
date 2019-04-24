@@ -1,5 +1,6 @@
 package elisha.project.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,12 @@ public class ItemServiceImpl implements ItemService {
 		List<Item> itemList = itemDao.findAllByOrderByPriceDesc();
 		return itemList;
 
+	}
+
+	@Override
+	public ArrayList<Item> findByTitle(String itemName) {
+		
+		 return itemDao.findByTitleLike("%" + itemName + "%");
 	}
 	
 	

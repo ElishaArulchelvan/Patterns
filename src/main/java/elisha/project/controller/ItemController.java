@@ -85,7 +85,7 @@ public class ItemController {
 	
 	
 	
-	@RequestMapping(value = {"/delete/{itemId}"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
 	public String deleteItem(@PathVariable Long itemId, Model model)
 	{
 		
@@ -110,7 +110,7 @@ public class ItemController {
 		return "viewItems";
 	}
 	
-	@RequestMapping(value = {"/edit/{itemId}"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
 	public String editItem(Model model, @PathVariable Long itemId)
 	{
 		Item item = itemService.findById(itemId);
@@ -118,11 +118,11 @@ public class ItemController {
 		return "addItem";
 	}
 	
-	@RequestMapping(value = "/item/{itemId}")
-	public String showBookById(@PathVariable("itemId") Long itemId, Model model) {
+	@RequestMapping(value = "/item/{id}")
+	public String showBookById(@PathVariable("id") Long id, Model model) {
 
 		
-		Item item = itemService.findById(itemId);
+		Item item = itemService.findById(id);
 		model.addAttribute("item", item);
 
 		return "item";

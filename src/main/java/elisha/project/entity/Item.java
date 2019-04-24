@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -15,8 +16,9 @@ import javax.persistence.Table;
 public class Item {
 	
 	@Id
-	@GeneratedValue
-	private Long itemId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "itemId")
+	private Long id;
 	
 	@Column(nullable = false, unique = true)
 	private String title;
@@ -34,9 +36,7 @@ public class Item {
 	@Column(nullable = false, unique = true)
 	private int quantity;
 	
-	@ManyToOne
-	@JoinColumn(name="shoppingCartId")
-	private ShoppingCart shoppingCart;
+	
 	
 	//private byte[] image;
 	
@@ -54,13 +54,13 @@ public class Item {
 		this.quantity = quantity;
 	}
 
-	public Long getItemId()
+	public Long getId()
 	{
-		return itemId;
+		return id;
 	}
 
-	public void setItemId(Long itemId) {
-		this.itemId = itemId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getTitle() {

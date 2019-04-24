@@ -11,6 +11,7 @@
 <c:url var="LaptopUrl" value="/searchByCategory?category=Laptop"  />
 <c:url var="TVUrl" value="/searchByCategory?category=TV"  />
 <c:url var="TabletUrl" value="/searchByCategory?category=Tablet"  />
+<c:url var="addtocartURL" value="/addtocart" />
 
 
 
@@ -50,18 +51,18 @@
 	
 					<c:forEach items="${itemList}" var="item">
 						<tr>
-							<td>${item.getItemId()}</td>
+							<td>${item.getId()}</td>
 							<td>${item.getTitle()}</td>
 							<td>${item.getManufacturer()}</td>
 							<td>${item.getPrice()}</td>
 							<td>${item.getCategory()}</td>
 							<security:authorize access="hasRole('ADMIN')">
-									<td><a href="<c:url value='/edit/${item.itemId}'  />" class="btn btn-danger custom-width" >Edit</a></td>
-									<td><a href="<c:url value='/delete/${item.itemId}'  />" class="btn btn-danger custom-width" >Delete</a></td>
+									<td><a href="<c:url value='/edit/${item.id}'  />" class="btn btn-danger custom-width" >Edit</a></td>
+									<td><a href="<c:url value='/delete/${item.id}'  />" class="btn btn-danger custom-width" >Delete</a></td>
 						    </security:authorize>
 						    <security:authorize access="hasRole('USER')">
-									<td><a href="<c:url value='/add/${item.itemId}'  />" class="btn btn-danger custom-width" >Add To Cart</a></td>
-									<td><a href="<c:url value='/item/${item.itemId}'  />" class="btn btn-danger custom-width" >View</a></td>
+									<td><a href="<c:url value='/addtocart/${item.id}'  />" class="btn btn-danger custom-width" >Add To Cart</a></td>
+									<td><a href="<c:url value='/item/${item.id}'  />" class="btn btn-danger custom-width" >View</a></td>
 						    </security:authorize>
 						</tr>
 					</c:forEach>

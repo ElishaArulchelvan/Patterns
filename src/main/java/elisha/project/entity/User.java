@@ -5,16 +5,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User {
 
 	public enum Role {
@@ -22,7 +24,7 @@ public class User {
 	}
 
 	@Id	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "UserId")
+	@Column(name = "userId")
 	private long id;
 	
 	@Column(name = "FirstName", nullable=false)
@@ -45,8 +47,8 @@ public class User {
 	@Column(name = "role", nullable = false)
 	private Role role = Role.USER;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-	private ShoppingCart shoppingCart;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy ="user")
+	private Cart cart;
 	
 	public User()
 	{
@@ -119,13 +121,15 @@ public class User {
 		this.id = id;
 	}
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
+
+	public Cart getCart() {
+		return cart;
 	}
 
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
+	
 	
 	
 

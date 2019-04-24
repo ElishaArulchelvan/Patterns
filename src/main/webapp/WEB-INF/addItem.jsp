@@ -20,7 +20,7 @@
 		<div class="contact-left">
 			<form:form commandName="addItem" action="${addItemUrl}"
 				modelAttribute="itemForm" method="POST" id="formMail">
-				<form:hidden path="itemId" />
+				<form:hidden path="id" />
 				<table align="center">
 
 					<tr>
