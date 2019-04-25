@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import elisha.project.dao.CartDao;
 import elisha.project.entity.Cart;
-import elisha.project.entity.CartItem;
 import elisha.project.entity.Item;
-import elisha.project.service.CartItemService;
 import elisha.project.service.CartService;
 
 @Service("cartService")
@@ -37,9 +35,9 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public Cart findByUserId(long l) {
+	public Cart findByUserId(long id) {
 		
-		return cartDao.findByUserId(l);
+		return cartDao.findByUserId(id);
 	}
 
 	
@@ -47,4 +45,4 @@ public class CartServiceImpl implements CartService {
 
 	
 
-}
+} 

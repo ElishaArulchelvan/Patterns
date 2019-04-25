@@ -6,6 +6,6 @@ public class CartItemId implements Serializable {
 	
 	private int cart;
 
-    private int item;
+    private Long item;
 
 }

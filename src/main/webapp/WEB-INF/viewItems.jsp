@@ -61,15 +61,14 @@
 									<td><a href="<c:url value='/delete/${item.id}'  />" class="btn btn-danger custom-width" >Delete</a></td>
 						    </security:authorize>
 						    <security:authorize access="hasRole('USER')">
-									<td><a href="<c:url value='/addtocart/${item.id}'  />" class="btn btn-danger custom-width" >Add To Cart</a></td>
-									<td><a href="<c:url value='/item/${item.id}'  />" class="btn btn-danger custom-width" >View</a></td>
+									<td><td><a href="${addtocartURL}/${item.id}" class="btn btn-sm btn-primary">Add To Cart</a></td>
+									<td><a href="<c:url value='/item/${item.id}'  />" class="btn btn-sm btn-primary" >View</a></td>
 						    </security:authorize>
 						</tr>
 					</c:forEach>
 
 				</tbody>
 			</table>
-			</form>
 		</div>
 	</div>
 

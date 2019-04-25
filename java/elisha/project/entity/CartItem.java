@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="cartitem")
 @IdClass(CartItemId.class)
@@ -30,7 +31,7 @@ public class CartItem{
     @Id
     @ManyToOne
     @JoinColumn(name = "itemId")
-    private Item item;
+    private Item item; 
 
     @Column(name = "quantity")
     private int quantity;
@@ -41,7 +42,7 @@ public class CartItem{
 
     public CartItem(Cart cart, Item item, int quantity) {
         this.cart = cart;
-        this.item = item;
+        //this.item = item;
         this.quantity = quantity;
     }
 
@@ -59,7 +60,7 @@ public class CartItem{
 
     public void setItem(Item item) {
         this.item = item;
-    }
+    } 
 
     public int getQuantity() {
         return quantity;
@@ -70,4 +71,4 @@ public class CartItem{
     }
 	
 
-}
+} 

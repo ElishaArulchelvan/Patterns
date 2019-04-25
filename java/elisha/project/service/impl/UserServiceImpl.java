@@ -48,6 +48,18 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByEmail(email);
 	}
 
+	@Override
+	public List<User> findAll() {
+		
+		return userDao.findAll();
+	}
+
+	@Override
+	public User findOne(Long id) {
+		
+		return userDao.findOne(id);
+	}
+
 	
 
 

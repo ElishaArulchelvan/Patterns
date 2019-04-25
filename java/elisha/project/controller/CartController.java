@@ -3,6 +3,7 @@ package elisha.project.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,16 +25,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import elisha.project.entity.Cart;
-import elisha.project.entity.CartItem;
+//import elisha.project.entity.Cart;
+//import elisha.project.entity.CartItem;
 import elisha.project.entity.Item;
 import elisha.project.entity.User;
-import elisha.project.service.CartItemService;
+//import elisha.project.service.CartItemService;
 import elisha.project.service.ItemService;
-import elisha.project.service.CartService;
+//import elisha.project.service.CartService;
 import elisha.project.service.UserService;
 
-@Controller
+/*@Controller
 public class CartController {
 	
 	@Autowired
@@ -49,21 +50,40 @@ public class CartController {
 	private CartItemService cartItemService;
 
 
-	@RequestMapping("/ShoppingCart/addtocart/{id}")
-    public ModelAndView addToCart(@PathVariable("id") Long id)
+	@RequestMapping(value = {"/addtocart/{id}"}, method = RequestMethod.GET)
+    public ModelAndView addToCart(@PathVariable("id") Long id,  Principal principal)
 	{
         ModelAndView model = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findByEmail(auth.getName());
-
-        Cart cart = cartService.findByUserId(user.getId());
-        System.out.println("CART IS " + cart.getCartItem() );
-        Item item = itemService.findById(id);
+        //Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        //user = userService.findByEmail(auth.getName());
+        String email = principal.getName();
+        
+		User user = new User();
+		user = userService.findByEmail(email);
+		System.out.println("USer is :" + user);
+	
+		
+		CartItem cartItem = cartItemService.findByItemId(id);
+		System.out.println("The item is " + cartItem);
+		Set<CartItem> items = new HashSet<>();
+		items.add(cartItem);
+		
+		Cart cart = new Cart();
+		cart.setUser(user);
+		cart.setCartItem(items);
+		cartService.saveCart(cart);
+		
+		
+       
+        cart = cartService.findByUserId(user.getId());
+        //cart.setUser(user);
+        //System.out.println("CART IS " + cart.getCartItem() );
+      /*  Item item = itemService.findById(id);
         String itemName = item.getTitle();
         System.out.println("Item title " + itemName);
 
-        ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
-        cartItems.addAll(cart.getCartItem());
+        /*ArrayList<CartItem> cartItems = new ArrayList<CartItem>();
+        //cartItems.addAll(cart.getCartItem());
         boolean exist = true;
 
         for (int i = 0; i < cartItems.size(); i++) {
@@ -90,16 +110,24 @@ public class CartController {
 
             
             cart.setCartItem(updatedList);
-        }
+        } 
 
-        cartService.saveCart(cart);
+       CartItem cartitem = new CartItem();
+       cartitem.setCart(cart);
+       cartitem.setItem(item); */
+       
+       //cartItemService.saveCartItems(c);
+       
+       
+        
 
-        String successMessage = "";
+    /*    String successMessage = "";
         model.addObject("successMessage", successMessage);
 
-        ArrayList<Item> items = itemService.findByTitle(itemName);
-        model.addObject("items", items);
-        model.setViewName("viewItems");
+        //ArrayList<Item> items1 = itemService.findByTitle(itemName);
+        //model.addObject("items", items1);
+        //model.addObject("cartitems", cartitem);
+        model.setViewName("Cart");
 
         return model;
     }
@@ -129,3 +157,4 @@ public class CartController {
 	
 
 }
+*/

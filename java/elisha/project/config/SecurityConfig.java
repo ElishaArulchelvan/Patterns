@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/users/**", "/create-user").hasRole("ADMIN")
 		.antMatchers("/admin/**").hasRole("ADMIN")
 		.antMatchers("/addItem/**").hasRole("ADMIN")
+		.antMatchers("/orders").hasRole("ADMIN")
 		.antMatchers("viewItems").permitAll()
 		.antMatchers("/api/**").permitAll()
 		.antMatchers("/**").authenticated()

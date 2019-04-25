@@ -11,6 +11,9 @@
 <c:url value="/searchByTitle" var="searchByTitleURL" />
 <c:url value="/logout" var="logoutURL" />
 <c:url value="/Cart" var="cartURL" />
+<c:url value="/orders" var="ordersURL" />
+<c:url value="/addOrder" var="addOrderURL" />
+<c:url value="/userOrder" var="userOrderURL" />
 
 <html>
 <head>
@@ -53,6 +56,7 @@ li a:hover:not(.active) {
 	<ul class="nav nav-container">
 		<li><a href="${addItemURL}">Add Items</a></li>
 		<li><a href="${viewItemsURL}">View Items</a></li>
+		<li><a href="${ordersURL}">Orders</a></li>
 	</ul></li>
 	</sec:authorize>
 	
@@ -75,7 +79,9 @@ li a:hover:not(.active) {
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>
 	</li>	
-	<li><a href="${cartURL}">Cart</a></li>				
+	<li><a href="${cartURL}">Cart</a></li>	
+	<li><a href="${addOrderURL}">Make Order</a></li>
+	<li><a href="${userOrderURL}">My Orders</a></li>				
 		<li role="separator" class="divider"></li>
 		</sec:authorize>
 		<li><a href="${logoutURL}">Logout</a></li>

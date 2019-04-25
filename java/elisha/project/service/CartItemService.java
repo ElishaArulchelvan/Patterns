@@ -2,7 +2,6 @@ package elisha.project.service;
 
 import java.util.List;
 
-import elisha.project.entity.Cart;
 import elisha.project.entity.CartItem;
 import elisha.project.entity.Item;
 
@@ -16,4 +15,4 @@ public interface CartItemService {
 
     void saveCartItems(CartItem cartItems);
 
-}
+} 

@@ -11,7 +11,7 @@ public interface ItemService {
 	void save(Item item);
 	void delete(Item item);
 	List<Item> findAll();
-	Item findById(Long id);
+	Item findById(int id);
 	
 	List<Item> findByCategory(Category category);
 	List<Item> searchByManufacturer(String manufacturer);

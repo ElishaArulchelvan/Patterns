@@ -13,5 +13,5 @@ public interface CartDao extends JpaRepository<Cart, Long>{
 
 	Cart findById(int id);
 
-    Cart findByUserId(Long userId);
+    Cart findByUserId(Long id);
 }

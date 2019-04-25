@@ -1,5 +1,7 @@
 package elisha.project.entity;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -47,8 +50,12 @@ public class User {
 	@Column(name = "role", nullable = false)
 	private Role role = Role.USER;
 	
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy ="user")
-	private Cart cart;
+	/*@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy ="user")
+	private Cart cart; */
+	
+	@OneToMany
+    @JoinColumn(name = "userId")
+    private Set<OrderItem> orders;
 	
 	public User()
 	{
@@ -122,13 +129,23 @@ public class User {
 	}
 
 
-	public Cart getCart() {
+	/*public Cart getCart() {
 		return cart;
 	}
 
 	public void setCart(Cart cart) {
 		this.cart = cart;
+	} */
+
+	public Set<OrderItem> getOrders() {
+		return orders;
 	}
+
+	public void setOrders(Set<OrderItem> orders) {
+		this.orders = orders;
+	}
+	
+	
 	
 	
 	

@@ -35,11 +35,6 @@ public class ItemServiceImpl implements ItemService {
 		return itemDao.findAll();
 	}
 
-	@Override
-	public Item findById(Long id) {
-		
-		return itemDao.findOne(id);
-	}
 
 	@Override
 	public List<Item> findByCategory(Category category) {
@@ -81,6 +76,12 @@ public class ItemServiceImpl implements ItemService {
 	public ArrayList<Item> findByTitle(String itemName) {
 		
 		 return itemDao.findByTitleLike("%" + itemName + "%");
+	}
+
+	@Override
+	public Item findById(int id) {
+		return itemDao.findOne(id);
+	
 	}
 	
 	

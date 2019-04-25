@@ -38,7 +38,6 @@
     <div class="container">
         <h2>Your Cart Total is: <span ${total}></span></h2>
         <br/>
-        <a href="@{/homepage/order/{id}(id=${cart.id})}"class="btn btn-secondary" >Order </a>
     </div>
 
 </body>

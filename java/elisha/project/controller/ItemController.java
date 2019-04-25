@@ -60,6 +60,7 @@ public class ItemController {
 	{
 		if(result.hasErrors())
 		{
+			System.out.println("MANU " + item.getManufacturer());
 			return "addItem";
 		}
 		try {
@@ -69,6 +70,7 @@ public class ItemController {
 		}
 		catch(Exception e)
 		{
+			System.out.println("ERROR CATCH");
 			return "addItem";
 		}
 		
@@ -86,7 +88,7 @@ public class ItemController {
 	
 	
 	@RequestMapping(value = {"/delete/{id}"}, method = RequestMethod.GET)
-	public String deleteItem(@PathVariable Long itemId, Model model)
+	public String deleteItem(@PathVariable int itemId, Model model)
 	{
 		
 		Item item = itemService.findById(itemId);
@@ -111,7 +113,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
-	public String editItem(Model model, @PathVariable Long itemId)
+	public String editItem(Model model, @PathVariable int itemId)
 	{
 		Item item = itemService.findById(itemId);
 		model.addAttribute("itemForm", item);
@@ -119,7 +121,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "/item/{id}")
-	public String showBookById(@PathVariable("id") Long id, Model model) {
+	public String showBookById(@PathVariable("id") int id, Model model) {
 
 		
 		Item item = itemService.findById(id);

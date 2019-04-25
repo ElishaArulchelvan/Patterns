@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Cart {
 	
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "cartId")
 	private int id;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -73,8 +74,8 @@ public class Cart {
         cartItems.addAll(this.getCartItem());
 
         for (int i = 0; i < cartItems.size(); i++) {
-            Item item = cartItems.get(i).getItem();
-            total += item.getPrice() * cartItems.get(i).getQuantity();
+            //Item item = cartItems.get(i).getItem();
+            //total += item.getPrice() * cartItems.get(i).getQuantity();
         }
 
         return total;

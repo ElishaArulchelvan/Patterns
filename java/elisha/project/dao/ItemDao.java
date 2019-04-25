@@ -10,7 +10,7 @@ import elisha.project.entity.Category;
 import elisha.project.entity.Item;
 
 @Repository
-public interface ItemDao extends JpaRepository<Item, Long> {
+public interface ItemDao extends JpaRepository<Item, Integer> {
 	
 	List<Item> findByCategory(Category category);
 	List<Item> findByManufacturer(String manufacturer);
@@ -19,4 +19,5 @@ public interface ItemDao extends JpaRepository<Item, Long> {
 	List<Item> findAllByOrderByPriceDesc();
 	
 	ArrayList<Item> findByTitleLike(String itemName);
+	
 }
