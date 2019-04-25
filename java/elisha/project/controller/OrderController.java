@@ -96,4 +96,13 @@ public class OrderController {
 		
 		return "myOrder";
 	}
+	
+	@RequestMapping(value = "/payment", method = RequestMethod.GET)
+	public String getPaymentPage(Model model) {
+		
+		
+		return "payment";
+	}
+	
+	
 }
