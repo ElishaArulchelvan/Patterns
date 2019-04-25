@@ -20,14 +20,11 @@
 					</tr>
 				</thead>
 				<tbody>
-
-					<c:forEach items="${orderList}" var="orders">
 						<tr>
 							<td>${orders.getId()}</td>
 							<td>${orders.getUser().getEmail()}</td>
 							<td>${orders.getTotal()}</td>
 						</tr>
-					</c:forEach>
 
 				</tbody>
 			</table>

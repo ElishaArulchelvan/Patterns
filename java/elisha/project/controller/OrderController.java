@@ -81,17 +81,19 @@ public class OrderController {
 	
 	}
 	
-	@RequestMapping(value="/userOrder")
-	public String showUserOrder(@RequestParam("id") Long id, Principal principal, Model model)
+	@RequestMapping(value="/userOrder", method = RequestMethod.GET)
+	public String showUserOrder(Principal principal, Model model)
 	{
 		
-		User user = userService.findOne(id);
+		String email = principal.getName();
+		User user = userService.findByEmail(email);
 		
 		
 		System.out.println("user id: " + user.getFirstName());
-		OrderItem orders = orderService.findByUserId(id);
-		model.addAttribute("orderList", orders);
+		OrderItem orders = orderService.findByUserId(user.getId());
+		System.out.println("MY order: " + orders);
+		model.addAttribute("orders", orders);
 		
-		return "orders";
+		return "myOrder";
 	}
 }

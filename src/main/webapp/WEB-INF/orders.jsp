@@ -20,7 +20,6 @@
 					</tr>
 				</thead>
 				<tbody>
-
 					<c:forEach items="${orderList}" var="orders">
 						<tr>
 							<td>${orders.getId()}</td>
